@@ -15,6 +15,7 @@
 	}
 	
 	var idcheck = "";
+	var telcheck = "";
 	
 	
 	function lastTenYear() {
@@ -68,6 +69,11 @@
 				event.preventDefault();
 				return;
 			}
+			if (telcheck != "success") {
+				alert("전화번호 중복확인 바랍니다.")
+				event.preventDefault();
+				return;
+			}
 		});
 	}
 
@@ -106,7 +112,6 @@
 		var tel = document.getElementsByName("memberTel")[0].value + "-";
 		tel += document.getElementsByName("memberTel")[1].value + "-";
 		tel += document.getElementsByName("memberTel")[2].value;
-		console.log(tel);
 		
 		$.ajax({
 			data : {"tel" : tel},
@@ -118,10 +123,10 @@
 					document.getElementsByName("memberTel")[0].value = "";
 					document.getElementsByName("memberTel")[1].value = "";
 					document.getElementsByName("memberTel")[2].value = "";
-					idcheck = "";
+					telcheck = "";
 					alert("사용중인 전화번호입니다. 다른 전화번호를 입력해주세요.");
 				} else {
-					idcheck = "success";
+					telcheck = "success";
 					alert("사용가능한 전화번호입니다.");
 				}
 			}

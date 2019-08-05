@@ -30,7 +30,7 @@ public class ReplyDao {
 		}
 	}
 
-	// 글 작성
+	// 댓글 작성
 	public int insertReply(Reply r) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

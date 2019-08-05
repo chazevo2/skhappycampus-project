@@ -26,6 +26,7 @@
 		location.href = "login";
 	}
 	
+	// 좋아요
 	function like(num, board_like) {
 		if('${sessionScope.memberId}' == null || '${sessionScope.memberId}' == "") {
 			alert("로그인 후 이용바랍니다.");
@@ -50,6 +51,7 @@
 		}
 	}
 	
+	// 댓글
 	function reply(boardNum, parentNum) {
 		if('${sessionScope.memberId}' == null || '${sessionScope.memberId}' == "") {
 			alert("로그인 후 이용바랍니다.");
@@ -77,6 +79,7 @@
 		}
 	}
 	
+	// 댓글 삭제
 	function delReply(num, boardNum) {
 		if('${sessionScope.memberId}' == null || '${sessionScope.memberId}' == "") {
 			alert("로그인 후 이용바랍니다.");
@@ -98,6 +101,7 @@
 		}
 	}
 	
+	// 대댓글
 	function reReply(num) {
 		if('${sessionScope.memberId}' == null || '${sessionScope.memberId}' == "") {
 			alert("로그인 후 이용바랍니다.");
@@ -108,6 +112,13 @@
 			} else {
 				$("#reReply_"+num).hide();																	
 			}			
+		}
+	}
+	
+	function delArticle(num) {
+		var check = confirm("정말로 삭제하시겠습니까?");
+		if(check) {
+			location.href = "delArticle.do?num=" + num;		
 		}
 	}
 </script>
@@ -232,7 +243,7 @@ nav ul {
 									<c:choose>
 										<c:when test="${r.getParentNum() == 0}">
 											<dl class="reply_box">
-												<dt><a href="#none"><img src="img/profile.png" alt="프로필사진"></a></dt>
+<!-- 												<dt><a href="#none"><img src="img/profile.png" alt="프로필사진"></a></dt> -->
 												<dd><p class="name">${r.getReplyWriter()}<span>${r.getWriteDate()}</span></p>
 													<p>${r.getReplyContent()}</p>
 													<p style="float:right;"><a onclick="reReply(${r.getReplyNum()})" class="re_reply">댓글달기</a>
@@ -251,7 +262,7 @@ nav ul {
 										</c:when>
 										<c:otherwise>
 											<dl class="reply_box re">
-												<dt><a href="#none"><img src="img/profile.png" alt="프로필사진"></a></dt>
+<!-- 												<dt><a href="#none"><img src="img/profile.png" alt="프로필사진"></a></dt> -->
 												<dd><p class="name">${r.getReplyWriter()}<span>${r.getWriteDate()}</span></p>
 													<p>${r.getReplyContent()}</p>
 													<c:if test="${sessionScope.memberId == r.getReplyWriter()}">	
@@ -279,7 +290,7 @@ nav ul {
 								<a href="edit?num=${b.getBoardNum()}" class="board_button2 mt5">글수정</a>
 							</c:if>
 							<c:if test="${sessionScope.memberId == b.getBoardWriter() || sessionScope.grade == 'A'}">
-								<a href="delArticle.do?num=${b.getBoardNum()}" class="board_button2 mt5">글삭제</a>
+								<a onclick="delArticle(${b.getBoardNum()})" class="board_button2 mt5">글삭제</a>
 							</c:if>
 						</p>
 

@@ -168,8 +168,8 @@ nav ul {
 				<div id="memberList-content">
 					<table class="tb_base" summary="회원정보 테이블입니다.">
 						<colgroup>
-						<col width="18%">
-						<col width="*%" span="5">
+						<col width="25%">
+						<col width="*%" span="3">
 						<col width="24%">
 						</colgroup>
 						<thead>
@@ -177,8 +177,8 @@ nav ul {
 								<th scope="col">아이디(이메일)</th>
 								<th scope="col">이름</th>
 								<th scope="col">휴대폰</th>
-								<th scope="col">게시글수</th>
-								<th scope="col">댓글수</th>
+<!-- 								<th scope="col">게시글수</th> -->
+<!-- 								<th scope="col">댓글수</th> -->
 								<th scope="col">관리</th>
 								<th scope="col">등급</th>
 							</tr>
@@ -189,8 +189,8 @@ nav ul {
 									<td><c:out value="${m.getMemberId()}" /></td>
 									<td><c:out value="${m.getMemberName()}" /></td>
 									<td><c:out value="${m.getMemberTel()}" /></td>
-									<td>21</td>
-									<td>12</td>
+<!-- 									<td>21</td> -->
+<!-- 									<td>12</td> -->
 									<td>
 										<c:if test="${m.getMemberGrade() != 'A'}">
 											<input type="button" class="delbtn" value="강퇴" onclick="delMember('${m.getMemberId()}')">
@@ -201,11 +201,13 @@ nav ul {
 											<c:when test="${m.getMemberGrade() == 'G'}">일반</c:when>
 											<c:otherwise>관리자</c:otherwise>
 										</c:choose>
-										<select id="" title="등급" class="select_st">
-											<option value="G">일반</option>
-											<option value="A">관리자</option>
-										</select>
-										<input type="button" class="gradebtn" value="변경완료" onclick="chGrade(this, '${m.getMemberId()}', '${m.getMemberGrade()}')">
+										<c:if test="${m.getMemberId() != sessionScope.memberId}">
+											<select id="" title="등급" class="select_st">
+												<option value="G">일반</option>
+												<option value="A">관리자</option>
+											</select>
+											<input type="button" class="gradebtn" value="변경완료" onclick="chGrade(this, '${m.getMemberId()}', '${m.getMemberGrade()}')">											
+										</c:if>
 									</td>
 								</tr>
 							</c:forEach>

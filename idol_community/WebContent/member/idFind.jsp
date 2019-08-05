@@ -21,7 +21,7 @@
 			datatype : "text",
 			success : function(data) {
 				console.log(data);
-				if (data === '') {
+				if (data === 'fail') {
 					alert("존재하지 않는 회원정보입니다.");
 				} else {
 					alert("등록된 아이디는 " + data + "입니다.");
@@ -113,7 +113,7 @@ nav ul {
 					<tbody>
 						<tr>
 							<td><span>이름</span></td>
-							<td><input class="text_inpt" type="text" name="memberName" placeholder="이름" pattern="^[가-힣]{2,3}$" required autofocus value="박준혁"></td>
+							<td><input class="text_inpt" type="text" name="memberName" placeholder="이름" pattern="^[가-힣]{2,3}$" required autofocus></td>
 						</tr>
 						<tr>
 							<td><span>전화번호</span></td>
@@ -127,8 +127,8 @@ nav ul {
 									<option value="010">018</option>
 									<option value="010">019</option>
 								</select><span> - </span>
-								<input class="text_inpt" type="text" name="memberTel" pattern="^[0-9]{3,4}$" required value="1111"><span> - </span>
-								<input class="text_inpt" type="text" name="memberTel" pattern="^[0-9]{4}$" required value="1111">
+								<input class="text_inpt" type="text" name="memberTel" pattern="^[0-9]{3,4}$" required><span> - </span>
+								<input class="text_inpt" type="text" name="memberTel" pattern="^[0-9]{4}$" required>
 							</td>
 						</tr>
 					</tbody>

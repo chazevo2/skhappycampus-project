@@ -24,7 +24,11 @@ public class IdFindCtrl extends HttpServlet {
 			
 			MemberService service = new MemberService();
 			String memberId = service.idFind(memberName, memberTel);
-			response.getWriter().write(""+ memberId); 
+			if(memberId != null && !memberId.equals("") && memberId != "") {
+				response.getWriter().write(""+ memberId); 
+			} else {
+				response.getWriter().write("fail"); 
+			}
 		}
 	}
 	

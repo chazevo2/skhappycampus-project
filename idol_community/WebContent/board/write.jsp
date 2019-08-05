@@ -50,7 +50,8 @@
 				event.preventDefault();
 				return;
 			}
-			if (document.getElementsByName("boardContent")[0].value == "") {
+			var content = document.getElementsByName("boardContent")[0].value;
+			if (content != null || content == "" || content.trim().length() == 0) {
 				alert("글 내용을 작성해주시기 바랍니다.");
 				event.preventDefault();
 				return;

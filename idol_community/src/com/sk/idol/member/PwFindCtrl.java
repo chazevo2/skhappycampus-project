@@ -20,11 +20,8 @@ public class PwFindCtrl extends HttpServlet {
 			request.getRequestDispatcher("member/pwFind.jsp").forward(request, response);
 		} else {
 			String memberName = request.getParameter("name");
-			System.out.println(memberName);
 			String memberId = request.getParameter("id");
-			System.out.println(memberId);
 			String memberTel = request.getParameter("tel");
-			System.out.println(memberTel);
 			
 			MemberService service = new MemberService();
 			Boolean result = service.pwFind(memberName, memberId, memberTel);

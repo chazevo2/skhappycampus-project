@@ -30,7 +30,7 @@ create table board (
 	view_cnt number,
 	board_like number,
 	constraint board_pk primary key(board_num),
-	constraint board_fk foreign key(board_writer) references member(member_id) on delete set null
+	constraint board_fk foreign key(board_writer) references member(member_id) on delete cascade
 );
 create sequence board_seq nocache;
 
@@ -44,6 +44,6 @@ create table reply (
 	parent_num number,-- 대댓글 경우 해당 댓글 번호
 	constraint reply_pk primary key(reply_num),
 	constraint reply_fk1 foreign key(board_num) references board(board_num) on delete cascade,
-	constraint reply_fk2 foreign key(reply_writer) references member(member_id) on delete set null
+	constraint reply_fk2 foreign key(reply_writer) references member(member_id) on delete cascade
 );
 create sequence reply_seq nocache;
