@@ -1,23 +1,23 @@
 # skhappycampus-project
 Idol_Community (JSP/Servlet project)
 
-* 개발언어
+*개발언어
 - jdk 1.8
 - html5
 - css3
 - JavaScript
 - JSP/Servlet 3.1
 
-* 서버
+*서버
 - Apache Tomcat 8.5
 
-* 개발 도구
+*개발 도구
 - Oracle 11g express
 - eclipse pothon
 - sql Developer
 - AmatersUML 1.3.4
 
-* API & Library
+*API & Library
 - jQuery 3.2.1
 - taglibs 1.2.5
 - youtube - iframe_api
